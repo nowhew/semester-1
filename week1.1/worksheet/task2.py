@@ -20,3 +20,4 @@ try:
     break
 except:
     print("Invalid Amount")
+    exit()
