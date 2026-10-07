@@ -4,7 +4,7 @@
 # Find and fix the errors
 
 name = imput("Enter your name: ")
-int(age) = input("Enter your age: ")
- city = input("Enter your city: ")
+age = int(input("Enter your age: "))
+city = input("Enter your city: ")
 
-print("Hello {name}, you are {age} years old and live in {city}.")
+print(f"Hello {name}, you are {age} years old and live in {city}.")

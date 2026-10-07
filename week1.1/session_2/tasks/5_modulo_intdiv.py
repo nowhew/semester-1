@@ -18,9 +18,20 @@ for row in data:
     # for example: if minutes_late is 2000, then days = 1, hours = 9, minutes = 20
     # hint: there are 1440 minutes in a day (24 * 60)
     
-    days = 0
-    hours = 0
-    minutes = 0
+    days, hours, minutes = 0, 0, 0
+
+    try:
+        days = int(minutes_late / (60*60*24))
+    except:
+        pass
+    try:
+        hours = int((minutes_late % (60*60*24)) / 60.0)
+    except:
+        pass
+    try:
+        minutes = int((minutes_late % (60*60)) / 60.0)
+    except:
+        pass
     
     print(f"Student {row[0]}: {days}D {hours}H {minutes}M")
 

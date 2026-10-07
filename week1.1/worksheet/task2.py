@@ -17,7 +17,6 @@ try:
     intrest = annual_savings * 0.008
     total_savings = annual_savings + intrest
     print(f"With intrest, you will save £{total_savings:.2f} per year.")
-    break
 except:
-    print("Invalid Amount")
+    print("Invalid amount")
     exit()
