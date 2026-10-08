@@ -3,16 +3,15 @@ import sys
 
 try:
     mark = int(input("enter mark: "))
-    if mark < 0 or mark > 100:
-        sys.exit("Error: Grade must be an integer between 0 and 100")
-
-    grade = "Fail"
-    if grade > 39:
-        grade = "Pass"
-    if grade > 69:
-        grade = "Distinction"
-
-    print(f"{mark} is {grade}")
-
 except:
-    sys.exit("Error!")
+    sys.exit("Error: Grade must be an integer between 0 and 100")
+
+if mark < 0 or mark > 100:
+    sys.exit("Error: Grade must be an integer between 0 and 100")
+grade = "Fail"
+if mark > 39:
+    grade = "Pass"
+if mark > 69:
+    grade = "Distinction"
+
+print(f"{mark} is a {grade}")
