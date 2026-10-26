@@ -35,4 +35,6 @@ print(mystery_func("ABC"))
 # to see if you are right?
 
 # print(mystery_func("X"))
+#outputs false
 # print(mystery_func("[2, 3]"))
+#outputs false

@@ -13,7 +13,7 @@
 """
 
 
-def string_to_morse_code(string):
+def string_to_morse_code(txt : str) -> str:
     """
     Returns the Morse code of the string.
     """
@@ -31,7 +31,13 @@ def string_to_morse_code(string):
              '.': '.-.-.-', '-': '-....-', '+': '.-.-.',  '"': '.-..-.',
              '?': '..--..', '/': '-..-.'}
 
+    morse = ""
+    for char in txt:
+        if not char.upper() in mcode:
+            raise ValueError(f"\'{char}\' is not representable in morse code")
+        morse += f"{mcode[char.upper()]} "
 
+    return morse[:-1]
 # test data
 
 # .... . .-.. .-.. ---   .-- --- .-. .-.. -.. -.-.--
