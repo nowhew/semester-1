@@ -9,7 +9,8 @@
     Name:
 """
 
-def currency_converter(amount, from_currency, to_currency):
+def currency_converter(amount : float, from_currency : str, to_currency : str):
+    amount = max(round(amount, 2), 0)
 
     conversion_rate = {
         'GBP': {'CNY': 9.24, 'PHP': 75.00, 'INR': 109.06},
@@ -18,9 +19,7 @@ def currency_converter(amount, from_currency, to_currency):
         'INR': {'PHP': 0.69, 'CNY': 0.09, 'GBP': 0.01}
     }
 
-    # your code here
-
-    return None
+    return amount * conversion_rate[from_currency][to_currency]
 
 # Submit only this file currency_converter.py with the completed function.
 
