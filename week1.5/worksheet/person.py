@@ -35,7 +35,7 @@ class Person:
         returns true if today is persons birthday
         """
 
-        return date.today() == self.birth
+        return str(date.today()) == str(self.birth)
 
     # Write a constructor here to create and initialize name and
     # birth fields (see README.md for further details)
