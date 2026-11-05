@@ -6,3 +6,10 @@
 
 # See README.md for full details of what is required and what
 # program output should look like
+
+from dataset import QuakeDataset
+from feed import QuakeFeed
+
+ds = QuakeDataset(QuakeFeed("1.0", "day"))
+ds.read_feed()
+print(str(ds))

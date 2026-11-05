@@ -8,9 +8,13 @@ class Person:
     """
 
     def __init__(self, name : str, birth : date):
+        """
+        constructs a person object given a name and date of birth
+        """
+
         if not isinstance(name, str):
             raise TypeError("name must be a string")
-        if not isinstance(name, date):
+        if not isinstance(birth, date):
             raise TypeError("birth must be a date")
 
         if len(name) == 0:
@@ -24,19 +28,26 @@ class Person:
         returns a string containing the initials of the person
         """
 
-        return [name[0].capitalize() for name in self.name.split(' ')]
+        return ''.join([name[0].capitalize() for name in self.name.split(' ')])
 
     def is_birthday(self) -> bool:
         """
         returns true if today is persons birthday
         """
 
-        return self.birth == date.today()
-
-
+        return date.today() == self.birth
 
     # Write a constructor here to create and initialize name and
     # birth fields (see README.md for further details)
 
     # Implement methods initials() and is_birthday() here
     # (see README.md for further details)
+
+#p = Person("Johnny Testcase", date.today())
+#print(p.is_birthday())
+#
+#p = Person("Johnny Testcase", date.fromisoformat("2026-11-05"))
+#print(p.is_birthday())
+#
+#p = Person("Johnny Testcase", date.fromisoformat("2025-11-04"))
+#print(p.is_birthday())

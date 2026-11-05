@@ -17,7 +17,7 @@ class QuakeDataset:
     An earthquake dataset obtained from a USGS data feed.
     """
 
-    def __init__(self, feed):
+    def __init__(self, feed : QuakeFeed):
         """
         Creates an empty dataset, linked to a specific data feed.
         """
@@ -42,6 +42,16 @@ class QuakeDataset:
         # each dictionary and convert them into the required types before
         # creating a Quake object and storing it in the list.
 
+        self.data = []
+        for entry in self.feed.reader():
+            self.data.append(Quake(
+                datetime.fromisoformat(entry["time"]),
+                float(entry["longitude"]),
+                float(entry["latitude"]),
+                float(entry["depth"]),
+                float(entry["mag"])
+            ))
+
     def __len__(self):
         """
         Returns the size of this dataset.
@@ -54,6 +64,10 @@ class QuakeDataset:
         """
         # Write code here to create and return a string representation
         # (Include number of quakes and details of the feed that was used)
+        return f"""
+        num quakes: {len(self.data)}, feed: {str(self.feed)},
+        quakes: {', '.join([str(quake) for quake in self.data])}
+        """
 
     def mean_depth(self):
         """
