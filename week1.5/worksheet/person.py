@@ -35,7 +35,7 @@ class Person:
         returns true if today is persons birthday
         """
 
-        return date.today().month == self.birth and date.today().weekday == self.birth.weekday
+        return date.today().month == self.birth.month and date.today().day == self.birth.day
 
     # Write a constructor here to create and initialize name and
     # birth fields (see README.md for further details)

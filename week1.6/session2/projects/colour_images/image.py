@@ -77,7 +77,7 @@ class GreyImage(Image):
     def _write_header(self, f):
         f.write("P2\n")
         f.write(f"{self.width} {self.height}\n")
-        f.wrote(f"{self.max_value}\n")
+        f.write(f"{self.max_value}\n")
 
     def _write_pixels(self, f):
         for y in range(0, self.width):

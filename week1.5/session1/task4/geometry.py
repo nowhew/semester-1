@@ -21,12 +21,12 @@ class Point:
     A Point in 2D space.
     """
 
+    # Add constructor here
+
     def __init__(self, x : float, y : float):
         self.x = x
         self.y = y
-
-    # Add constructor here
-
+        
     # Add distance() method here
 
     def distance(self) -> float:
