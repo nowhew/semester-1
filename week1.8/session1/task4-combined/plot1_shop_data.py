@@ -61,6 +61,8 @@ plt.show()
 
 # To practice, here are some tasks to use - remember, the original data is named shop_data
 
+
+
 # Create a pie chart to show sales per product
 
 

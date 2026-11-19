@@ -11,19 +11,39 @@ plot and show the graphs.
 import pandas as pd
 import matplotlib.pyplot as plt
 
-def average_bar_chart(data):
+def average_bar_chart(data : pd.DataFrame):
     '''
     Complete this code to produce a bar chart of the total of each 'hours per day' column
     '''
+    categories = []
+    values = []
+
+    for c in data.columns:
+        if not "Hours_Per_Day" in c:
+            continue
+        categories.append(c.replace("_", " "))
+        values.append(data[c].mean())
+
+    plt.bar(categories, values, width=0.5)
+    plt.xticks(rotation=45, ha="right")
+    plt.tight_layout()
+    plt.xlabel("Category")
+    plt.ylabel("Value")
+    plt.title("Average Hours Per Day")
     pass
 
-def hours_histogram(data, column_name):
+def hours_histogram(data : pd.DataFrame, column_name):
     '''
     Complete this code so that it can display a histogram of any given 'hours per day' column
     '''
+
+    col = data[column_name]
+    plt.hist(col)
+    plt.title(f"frequency of hours spent on {column_name}")
+    
     pass
 
-def hours_pie_chart(data, student_id):
+def hours_pie_chart(data : pd.DataFrame, student_id):
     '''
     Complete this code so that it produces a pie chart of any given student's hours per day - this should be selected by student ID (the first column)
     '''
@@ -51,7 +71,6 @@ def display_menu():
 ## main program:
 
 data = pd.read_csv("lifestyle_data.csv")
-
 # Note - when you run this in Interactive mode, the 'input' will be through a pop up instead of the terminal.
 while True:
     choice = display_menu()

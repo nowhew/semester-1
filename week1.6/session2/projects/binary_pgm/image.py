@@ -68,7 +68,7 @@ class Image:
 
         Any existing image data will be replaced.
         """
-        with open(filename) as imgfile:
+        with open(filename, "rb") as imgfile:
             self._parse_magic_number(imgfile)
             self._parse_dimensions(imgfile)
             self._parse_max_value(imgfile)
@@ -76,12 +76,12 @@ class Image:
 
     def _parse_magic_number(self, imgfile):
         line = imgfile.readline().strip()
-        if line != "P2":
+        if line != b"P5":
             raise ImageError("unrecognized magic number")
 
     def _parse_dimensions(self, imgfile):
         line = imgfile.readline().strip()
-        if line.startswith("#"):
+        if line.startswith(b"#"):
             # Ignore comment and read another line
             line = imgfile.readline().strip()
         parts = line.split()
@@ -93,11 +93,11 @@ class Image:
         self.max_value = int(line)
 
     def _parse_pixels(self, imgfile):
-        self.pixels = [int(value) for value in imgfile.read().split()]
+        self.pixels = [int(value) for value in imgfile.read(1 if self.max_value < 256 else 2)]
 
         if len(self.pixels) != self.width * self.height:
             raise ImageError("number of pixels doesn't match image dimensions")
-
+        
         if any(p < 0 or p > self.max_value for p in self.pixels):
             raise ImageError(f"pixel value outside allowed range (0 to {self.max_value})")
 
