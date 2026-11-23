@@ -2,6 +2,7 @@
 import httpx
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy
 
 api_key="U6KXJTZC2E8VGH39PD7UMG4BZ"   # your API key
 
@@ -39,10 +40,16 @@ df = pd.DataFrame(temp_data)
 
 # using matplotlib plot the 3 data sets: (tempmin,temp,tempmax) as line graphs
 
+for c in df.columns:
+    for i in len(c):
+        c[i] = (c[i] - 32) / (9 / 5)
+    
+
 df.plot()
 
+plt.xlabel("days")
+plt.ylabel("temperature (C)")
 plt.show()
-
 # annotate the graph with axis labels
 
 # note that temperature is in Farenheit (F)
